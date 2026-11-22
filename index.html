@@ -33,7 +33,7 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
-    padding: 40px 25px;
+    padding: 45px 25px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     position: relative;
     z-index: 2;
@@ -41,7 +41,7 @@
 
   .step {
     display: none;
-    animation: fadeIn 1.2s ease forwards;
+    animation: fadeIn 1.4s ease forwards;
   }
 
   .step.active {
@@ -54,55 +54,55 @@
   }
 
   p {
-    font-size: 1.1rem;
-    line-height: 2;
-    margin-bottom: 30px;
+    font-size: 1.05rem;
+    line-height: 2.1;
+    margin-bottom: 28px;
     letter-spacing: 0.08em;
   }
 
   .highlight {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     font-weight: 600;
     color: #ffd3b6;
-    margin: 25px 0;
+    margin: 30px 0;
     display: block;
+    letter-spacing: 0.12em;
+  }
+
+  .sub-note {
+    font-size: 0.92rem;
+    color: #cbd5e1;
+    line-height: 1.9;
+    margin-top: 15px;
+  }
+
+  .signature {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin-top: 35px;
+    letter-spacing: 0.1em;
   }
 
   .btn {
     background: transparent;
     color: #ffd3b6;
-    border: 1px solid #ffd3b6;
-    padding: 12px 32px;
-    font-size: 1rem;
+    border: 1px solid rgba(255, 211, 182, 0.6);
+    padding: 11px 30px;
+    font-size: 0.95rem;
     font-family: 'Shippori Mincho', serif;
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
     letter-spacing: 0.1em;
+    margin-top: 10px;
   }
 
   .btn:hover, .btn:active {
-    background: #ffd3b6;
-    color: #1a1a2e;
-    box-shadow: 0 0 15px rgba(255, 211, 182, 0.5);
+    background: rgba(255, 211, 182, 0.15);
+    border-color: #ffd3b6;
   }
 
-  .btn-yes {
-    background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-    color: #1a1a2e;
-    border: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    padding: 15px 40px;
-    box-shadow: 0 5px 20px rgba(255, 154, 158, 0.4);
-  }
-
-  .btn-yes:hover {
-    transform: scale(1.05);
-    background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 100%);
-  }
-
-  /* 背景のキラキラ演出 */
+  /* 背景の星空 */
   .star {
     position: absolute;
     background: white;
@@ -123,53 +123,43 @@
 <div id="stars"></div>
 
 <div class="container">
-  <!-- ステップ1：導入 -->
+  <!-- ステップ1 -->
   <div class="step active" id="step1">
     <p>奏へ</p>
-    <p>今日は11月22日。<br>いいふうふの日だね。</p>
-    <p>本当は今すぐそっちに行って<br>直接顔を見て伝えたいことがあるんだ。</p>
+    <p>今日は11月22日。<br>いい夫婦の日だね。</p>
+    <p>本当は今すぐそっちに行って<br>直接顔を見て伝えたかったことがあるんだ。</p>
     <button class="btn" onclick="nextStep(2)">ページをめくる</button>
   </div>
 
-  <!-- ステップ2：思い出と感謝 -->
+  <!-- ステップ2 -->
   <div class="step" id="step2">
-    <p>離れている時間があっても、<br>奏と過ごした日々や<br>一緒に笑った記憶が<br>いつもわたしを支えてくれているよ。</p>
-    <p>いつも本当にありがとう。</p>
+    <p>離れていても、<br>奏と過ごした日々の<br>優しい記憶が<br>いつもわたしを支えてくれているよ。</p>
+    <p>本当にありがとう。</p>
     <button class="btn" onclick="nextStep(3)">次へ</button>
   </div>
 
-  <!-- ステップ3：プロポーズ -->
+  <!-- ステップ3：プロポーズして静かに終わる -->
   <div class="step" id="step3">
     <p>これから先も、<br>どんな季節も、どんな未来も、<br>一番近くで奏と歩んでいきたい。</p>
     <span class="highlight">わたしと結婚してください。</span>
-    <button class="btn btn-yes" onclick="sayYes()">はい</button>
-  </div>
-
-  <!-- ステップ4：返事の後 -->
-  <div class="step" id="step4">
-    <span class="highlight">ありがとう、奏。</span>
-    <p>世界一幸せにするよ。<br>これからもずっと大好きです。</p>
-    <p style="font-size: 0.9rem; color: #aaa; margin-top: 20px;">2026.11.22 えりかより</p>
+    <p class="sub-note">
+      今はただ、この気持ちを伝えたかっただけだから<br>
+      返事は急がないよ。<br>
+      これからもずっと大好きです。
+    </p>
+    <p class="signature">2026.11.22 えりかより</p>
   </div>
 </div>
 
 <script>
-  // ステップ切り替え
   function nextStep(stepNumber) {
     document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
     document.getElementById('step' + stepNumber).classList.add('active');
   }
 
-  // 「はい」を押したときの演出
-  function sayYes() {
-    nextStep(4);
-    createCelebrationStars();
-  }
-
-  // 背景の星空を生成
   function initStars() {
     const starsContainer = document.getElementById('stars');
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 45; i++) {
       const star = document.createElement('div');
       star.className = 'star';
       const size = Math.random() * 3 + 1;
@@ -179,24 +169,6 @@
       star.style.top = Math.random() * 100 + 'vh';
       star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
       star.style.setProperty('--max-opacity', Math.random() * 0.7 + 0.3);
-      starsContainer.appendChild(star);
-    }
-  }
-
-  // 祝福のキラキラを増やす
-  function createCelebrationStars() {
-    const starsContainer = document.getElementById('stars');
-    for (let i = 0; i < 50; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      const size = Math.random() * 5 + 2;
-      star.style.width = size + 'px';
-      star.style.height = size + 'px';
-      star.style.background = '#ffd3b6';
-      star.style.left = Math.random() * 100 + 'vw';
-      star.style.top = Math.random() * 100 + 'vh';
-      star.style.setProperty('--duration', (Math.random() * 1.5 + 1) + 's');
-      star.style.setProperty('--max-opacity', '1');
       starsContainer.appendChild(star);
     }
   }
